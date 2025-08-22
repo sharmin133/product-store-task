@@ -3,15 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { useSession, signOut } from "next-auth/react";
 
-const Navbar = () => {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession(); // Check if user is logged in
 
   return (
     <nav className="bg-white shadow-md fixed w-full top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="text-2xl font-bold text-pink-600">
@@ -24,10 +25,30 @@ const Navbar = () => {
             <Link href="/" className="text-gray-700 hover:text-pink-600">
               Home
             </Link>
-              <Link  className="text-gray-700 hover:text-pink-600" href="/products">Products</Link>
-            <Link href="/login" className="text-gray-700 hover:text-pink-600">
-              Login
+            <Link href="/products" className="text-gray-700 hover:text-pink-600">
+              Products
             </Link>
+
+            {session ? (
+              <>
+                <Link
+                  href="/dashboard/add-product"
+                  className="text-gray-700 hover:text-pink-600"
+                >
+                  Add Product
+                </Link>
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="text-gray-700 hover:text-pink-600"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link href="/login" className="text-gray-700 hover:text-pink-600">
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -60,19 +81,35 @@ const Navbar = () => {
             >
               Products
             </Link>
-            <Link
-              href="/login"
-              className="block text-gray-700 hover:text-pink-600"
-              onClick={() => setIsOpen(false)}
-            >
-              Login
-            </Link>
+
+            {session ? (
+              <>
+                <Link
+                  href="/dashboard/add-product"
+                  className="block text-gray-700 hover:text-pink-600 w-full text-left"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Add Product
+                </Link>
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="block text-gray-700 hover:text-pink-600 w-full text-left"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/login"
+                className="block text-gray-700 hover:text-pink-600"
+                onClick={() => setIsOpen(false)}
+              >
+                Login
+              </Link>
+            )}
           </div>
         </div>
       )}
     </nav>
   );
-};
-
-export default Navbar;
-
+}

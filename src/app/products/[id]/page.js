@@ -42,12 +42,12 @@ export default async function ProductDetailPage({ params }) {
         {/* Product Info */}
         <div className="md:w-1/2 flex flex-col gap-4">
           <h1 className="text-3xl font-bold">{product.name}</h1>
-          <p className="text-gray-600">{product.description}</p>
+          <p className="">{product.description}</p>
           <p className="text-lg font-semibold">Price: ${product.price}</p>
-          <p className="text-gray-700">
+          <p className="">
             <span className="font-semibold">Category:</span> {product.category}
           </p>
-          <p className="text-gray-700">
+          <p className="">
             <span className="font-semibold">Brand:</span> {product.brand}
           </p>
 
