@@ -1,7 +1,12 @@
-import Image from "next/image";
+import HeroSection from "@/Components/HeroSection";
+import HomePageShowProduct from "@/Components/HomePageShowProduct";
+
 
 export default function Home() {
   return (
-  <h2>Product Store</h2>
+    <div>
+      <HeroSection />
+      <HomePageShowProduct></HomePageShowProduct>
+    </div>
   );
 }
