@@ -21,7 +21,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 items-center">
             <Link href="/" className="text-gray-700 hover:text-pink-600">
               Home
             </Link>
@@ -39,14 +39,17 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="text-gray-700 hover:text-pink-600"
+                  className="border border-pink-600 text-pink-600 bg-white px-4 py-1 rounded hover:bg-pink-600 hover:text-white transition"
                 >
                   Logout
                 </button>
               </>
             ) : (
-              <Link href="/login" className="text-gray-700 hover:text-pink-600">
-                Login
+              <Link href="/login">
+                <button className="border border-pink-600 text-pink-600 bg-white px-4 py-1 rounded hover:bg-pink-600 hover:text-white transition"
+                >
+                  Login
+                </button>
               </Link>
             )}
           </div>
@@ -93,7 +96,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => signOut({ callbackUrl: "/" })}
-                  className="block text-gray-700 hover:text-pink-600 w-full text-left"
+                  className="block w-full text-left border border-pink-600 text-pink-600 bg-white px-4 py-1 rounded hover:bg-pink-600 hover:text-white transition"
                 >
                   Logout
                 </button>
@@ -101,10 +104,11 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="block text-gray-700 hover:text-pink-600"
                 onClick={() => setIsOpen(false)}
               >
-                Login
+                <button  className="block w-full text-left border border-pink-600 text-pink-600 bg-white px-4 py-1 rounded hover:bg-pink-600 hover:text-white transition">
+                  Login
+                </button>
               </Link>
             )}
           </div>

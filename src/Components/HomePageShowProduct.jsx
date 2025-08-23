@@ -43,7 +43,7 @@ export default async function HomePageShowProduct() {
       <div className="text-center mt-8">
         <Link
           href="/products"
-          className="px-6 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700"
+          className="px-6 py-2 bg-white text-black rounded-lg hover:bg-pink-700"
         >
           See More
         </Link>

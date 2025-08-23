@@ -22,7 +22,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <div className="relative w-screen h-[80vh] overflow-hidden">
+    <div className="relative w-screen h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
       {/* Slider Section */}
       <div
         className="flex transition-transform duration-700 ease-in-out h-full"
